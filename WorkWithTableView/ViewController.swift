@@ -48,7 +48,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0: nameSection = "Fruit"
         case 1: nameSection = "Animal"
-        case 2: nameSection = "People"
+        case 2: nameSection = "Emotions"
         default: nameSection = nil
         }
         return nameSection
@@ -68,6 +68,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
         cell.textLabel?.text = emoji[indexPath.section][indexPath.row]
+        configureCellColor(cell, indexPath)
         return cell
+    }
+    
+    private func configureCellColor(_ cell: UITableViewCell,_ indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: cell.backgroundColor = UIColor.red
+        case 1: cell.backgroundColor = UIColor.blue
+        case 2: cell.backgroundColor = UIColor.green
+        default:
+            cell.backgroundColor = .gray
+        }
     }
 }
