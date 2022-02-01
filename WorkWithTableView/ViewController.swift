@@ -111,4 +111,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         30
     }
+    
+    // Row Tap
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let text = """
+                   section index: \(indexPath.section)
+                   row index: \(indexPath.row)
+                   """
+        print(text)
+    }
 }
