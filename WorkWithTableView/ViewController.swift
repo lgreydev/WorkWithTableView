@@ -127,6 +127,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         // Go to SecondViewController
         if indexPath.section == 0 && indexPath.row == 0 {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as! SecondViewController
+//            present(vc, animated: true)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

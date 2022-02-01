@@ -63,7 +63,13 @@
                         <viewLayoutGuide key="safeArea" id="zMn-zj-NUW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Second VC" id="TRT-Ua-B2B"/>
+                    <navigationItem key="navigationItem" title="Second VC" id="TRT-Ua-B2B">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hyi-N8-6bJ">
+                            <connections>
+                                <action selector="addButton:" destination="O6F-7l-rl4" id="FNI-vL-iKL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="h5z-XN-cP3" id="eJk-3O-e3u"/>
                     </connections>
