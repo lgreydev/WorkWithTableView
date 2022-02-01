@@ -18,15 +18,11 @@ class SecondViewController: UIViewController {
 
     }
     
-
-   
-    
     @IBAction func addButton(_ sender: Any) {
         Weather.data.append("Any weather ⛄️")
         myTableView.reloadData()
     }
 }
-
 
 // MARK: - Delegate DataSource
 extension SecondViewController: UITableViewDataSource, UITableViewDelegate {
