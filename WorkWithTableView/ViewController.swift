@@ -85,7 +85,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
         cell.textLabel?.text = emoji[indexPath.section][indexPath.row]
         
-        cell.accessoryType = .detailButton
+        if indexPath.section == 0 && indexPath.row == 0 {
+            cell.accessoryType = .disclosureIndicator
+        } else {
+            cell.accessoryType = .detailButton
+        }
         
         // Color Cell
         switch indexPath.section {
@@ -114,10 +118,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Row Tap
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let text = """
-                   section index: \(indexPath.section)
-                   row index: \(indexPath.row)
-                   """
-        print(text)
+    
+        print("""
+                Section index: \(indexPath.section)
+                Row index: \(indexPath.row)
+                """)
+        
+        // Go to SecondViewController
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as! SecondViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
