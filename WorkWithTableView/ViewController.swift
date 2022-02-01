@@ -17,12 +17,12 @@ class ViewController: UIViewController {
     
     private var myTableView = UITableView()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createTable()
     }
-
+    
     // MARK: - Configure Table
     private func createTable() {
         myTableView = UITableView(frame: view.bounds, style: .plain)
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         myTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(myTableView)
     }
-
+    
 }
 
 // MARK: - Delegate DataSource
@@ -44,7 +44,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var nameSection: String?
-
+        
         switch section {
         case 0: nameSection = "Fruit"
         case 1: nameSection = "Animal"
@@ -65,14 +65,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: - Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
         cell.textLabel?.text = emoji[indexPath.section][indexPath.row]
-        configureCellColor(cell, indexPath)
-        return cell
-    }
-    
-    private func configureCellColor(_ cell: UITableViewCell,_ indexPath: IndexPath) {
+        
+        // Color Cell
         switch indexPath.section {
         case 0: cell.backgroundColor = UIColor.red
         case 1: cell.backgroundColor = UIColor.blue
@@ -80,5 +78,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             cell.backgroundColor = .gray
         }
+        
+        return cell
     }
 }
