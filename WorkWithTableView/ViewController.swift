@@ -32,30 +32,16 @@ class ViewController: UIViewController {
         myTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(myTableView)
     }
-    
 }
 
 // MARK: - Delegate DataSource
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        emoji.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var nameSection: String?
-        
-        switch section {
-        case 0: nameSection = "Fruit"
-        case 1: nameSection = "Animal"
-        case 2: nameSection = "Emotions"
-        default: nameSection = nil
-        }
-        return nameSection
+        return emoji.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch section {
         case 0: return emoji[0].count
         case 1: return emoji[1].count
@@ -65,6 +51,35 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // Title Section
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var nameSection: String?
+        switch section {
+        case 0: nameSection = "Fruit"
+        case 1: nameSection = "Animal"
+        case 2: nameSection = "Emotions"
+        default: nameSection = nil
+        }
+        return nameSection
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        50
+    }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 50))
+//
+//        switch section {
+//        case 0: headerView.backgroundColor = .red.withAlphaComponent(0.2)
+//        case 1: headerView.backgroundColor = .green
+//        case 2: headerView.backgroundColor = .blue
+//        default: break
+//        }
+//        return headerView
+//    }
+
     // MARK: - Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
@@ -90,5 +105,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if let textLabel = cell?.textLabel?.text {
             print(textLabel)
         }
+    }
+    
+    // Row Height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        30
     }
 }
