@@ -70,6 +70,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
         cell.textLabel?.text = emoji[indexPath.section][indexPath.row]
         
+        cell.accessoryType = .detailButton
+        
         // Color Cell
         switch indexPath.section {
         case 0: cell.backgroundColor = UIColor.red
@@ -80,5 +82,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    // Accessory Button
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if let textLabel = cell?.textLabel?.text {
+            print(textLabel)
+        }
     }
 }
